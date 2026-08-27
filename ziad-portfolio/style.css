@@ -69,14 +69,46 @@ h1, h2, h3, h4, h5, h6 {
     height: 100vh;
     pointer-events: none;
     z-index: -1;
-    background: radial-gradient(circle at 15% 50%, rgba(46, 107, 214, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 85% 30%, rgba(127, 176, 255, 0.05) 0%, transparent 50%);
-    animation: gradientPulse 15s ease-in-out infinite alternate;
+    overflow: hidden;
 }
 
-@keyframes gradientPulse {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.1); }
+.gradient-bg::before,
+.gradient-bg::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.15; /* Keeps it subtle but visible */
+}
+
+.gradient-bg::before {
+    background: var(--primary);
+    width: 60vw;
+    height: 60vw;
+    top: -20%;
+    left: -10%;
+    animation: driftOne 20s infinite alternate ease-in-out;
+}
+
+.gradient-bg::after {
+    background: var(--highlight);
+    width: 50vw;
+    height: 50vw;
+    bottom: -20%;
+    right: -10%;
+    animation: driftTwo 25s infinite alternate ease-in-out;
+}
+
+@keyframes driftOne {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(30%, 20%) scale(1.2); }
+    100% { transform: translate(10%, 40%) scale(0.9); }
+}
+
+@keyframes driftTwo {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-30%, -20%) scale(1.1); }
+    100% { transform: translate(-50%, 10%) scale(1); }
 }
 
 /* Scroll Progress */

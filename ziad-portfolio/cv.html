@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ziad Mahmoud Said Fouda — CV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b1220;
+            --surface: #131d33;
+            --primary: #2e6bd6;
+            --highlight: #7fb0ff;
+            --text: #ffffff;
+            --text-sec: #94a3b8;
+            --text-muted: #64748b;
+            --border: rgba(255,255,255,0.08);
+            --gold: #eab308;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text-sec);
+            line-height: 1.6;
+        }
+
+        .cv-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2.5rem;
+        }
+
+        /* Header */
+        .cv-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .cv-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: -0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .cv-role {
+            font-size: 1.15rem;
+            color: var(--highlight);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .cv-contact {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            color: var(--text-sec);
+        }
+
+        .cv-contact a {
+            color: var(--highlight);
+            text-decoration: none;
+        }
+
+        .cv-contact a:hover { text-decoration: underline; }
+
+        /* Sections */
+        .cv-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .cv-section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 1.25rem;
+            position: relative;
+        }
+
+        .cv-section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        /* Profile */
+        .cv-profile {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--text-sec);
+        }
+
+        /* Education */
+        .cv-edu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.75rem;
+        }
+
+        .cv-edu-item h3 {
+            font-size: 1.05rem;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .cv-edu-item .cv-date {
+            font-size: 0.85rem;
+            color: var(--highlight);
+            font-family: 'Space Grotesk', sans-serif;
+            white-space: nowrap;
+        }
+
+        .cv-edu-detail {
+            font-size: 0.9rem;
+            color: var(--text-sec);
+            margin-bottom: 0.25rem;
+        }
+
+        /* Awards */
+        .cv-award-item {
+            margin-bottom: 1rem;
+            padding-left: 1.25rem;
+            position: relative;
+        }
+
+        .cv-award-item::before {
+            content: '★';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--gold);
+            font-size: 0.8rem;
+        }
+
+        .cv-award-item h3 {
+            font-size: 1rem;
+            color: var(--text);
+            font-weight: 600;
+            margin-bottom: 0.15rem;
+        }
+
+        .cv-award-item p {
+            font-size: 0.875rem;
+        }
+
+        .cv-award-item .cv-meta {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Certifications */
+        .cv-cert-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+
+        .cv-cert-item {
+            padding: 0.75rem 1rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .cv-cert-item h4 {
+            font-size: 0.9rem;
+            color: var(--text);
+            font-weight: 600;
+            margin-bottom: 0.15rem;
+        }
+
+        .cv-cert-item p {
+            font-size: 0.8rem;
+            color: var(--text-sec);
+        }
+
+        .cv-cert-item .cv-meta {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Projects */
+        .cv-project-item {
+            margin-bottom: 1.25rem;
+            padding-left: 1.25rem;
+            border-left: 2px solid var(--primary);
+        }
+
+        .cv-project-item h3 {
+            font-size: 1.05rem;
+            color: var(--text);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .cv-project-item .cv-tagline {
+            font-size: 0.9rem;
+            color: var(--highlight);
+            font-style: italic;
+            margin-bottom: 0.35rem;
+        }
+
+        .cv-project-item p {
+            font-size: 0.875rem;
+        }
+
+        .cv-project-item .cv-link {
+            font-size: 0.85rem;
+            color: var(--highlight);
+            text-decoration: none;
+        }
+
+        .cv-project-item .cv-link:hover { text-decoration: underline; }
+
+        /* Skills */
+        .cv-skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+
+        .cv-skill-cat h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .cv-skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .cv-tag {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 0.3rem 0.75rem;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            color: var(--highlight);
+        }
+
+        /* Languages */
+        .cv-lang-row {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .cv-lang-row span { color: var(--text); font-weight: 500; }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                color: #333;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .cv-container {
+                padding: 1rem 1.5rem;
+            }
+
+            .cv-name { color: #111; font-size: 2.2rem; }
+            .cv-role { color: #2e6bd6; }
+            .cv-contact { color: #555; }
+            .cv-contact a { color: #2e6bd6; }
+            .cv-section-title { color: #111; border-bottom-color: #ddd; }
+            .cv-section-title::after { background: #2e6bd6; }
+            .cv-profile { color: #444; }
+            .cv-edu-item h3 { color: #111; }
+            .cv-edu-item .cv-date { color: #2e6bd6; }
+            .cv-edu-detail { color: #555; }
+            .cv-award-item h3 { color: #111; }
+            .cv-award-item p { color: #555; }
+            .cv-award-item .cv-meta { color: #888; }
+            .cv-cert-item { background: #f8f9fa; border-color: #e0e0e0; }
+            .cv-cert-item h4 { color: #111; }
+            .cv-cert-item p { color: #555; }
+            .cv-cert-item .cv-meta { color: #888; }
+            .cv-project-item { border-left-color: #2e6bd6; }
+            .cv-project-item h3 { color: #111; }
+            .cv-project-item .cv-tagline { color: #2e6bd6; }
+            .cv-project-item p { color: #555; }
+            .cv-project-item .cv-link { color: #2e6bd6; }
+            .cv-skill-cat h4 { color: #888; }
+            .cv-tag { background: #f0f4ff; border-color: #d0dcf0; color: #2e6bd6; }
+            .cv-lang-row span { color: #111; }
+            .cv-lang-row { color: #555; }
+
+            .no-print { display: none !important; }
+        }
+
+        /* Print Button */
+        .print-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 100px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(46, 107, 214, 0.4);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .print-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(46, 107, 214, 0.5);
+        }
+
+        @media (max-width: 600px) {
+            .cv-cert-grid, .cv-skills-grid { grid-template-columns: 1fr; }
+            .cv-edu-item { flex-direction: column; }
+            .cv-contact { flex-direction: column; gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="print-btn no-print" onclick="window.print()">📄 Save as PDF</button>
+
+    <div class="cv-container">
+
+        <!-- Header -->
+        <header class="cv-header">
+            <h1 class="cv-name">Ziad Mahmoud Said Fouda</h1>
+            <p class="cv-role">Student · Developer · Innovator</p>
+            <div class="cv-contact">
+                <span>📍 Cairo, Egypt</span>
+                <a href="https://linkedin.com/in/ziad-f-4a5578345" target="_blank">🔗 LinkedIn</a>
+                <a href="https://ziadfouda.github.io/Ziad-Fouda-portfolio/ziad-portfolio/" target="_blank">🌐 Portfolio</a>
+            </div>
+        </header>
+
+        <!-- Profile -->
+        <section class="cv-section">
+            <h2 class="cv-section-title">Profile</h2>
+            <p class="cv-profile">Driven and detail-oriented Grade 11 student at the Egyptian American International School (EAIS) with a 3.85 GPA and a strong technical foundation in programming, cloud infrastructure, and artificial intelligence. Holds industry-recognized certifications from Huawei ICT Academy, Anthropic, and Egypt's Ministry of Communications and Information Technology (MCIT), with hands-on exposure to large language models, data organization, and digital content creation. Awarded "Best Integrated Project" for both semesters and recognized on the Honor Roll. Currently preparing for the Digital SAT.</p>
+        </section>
+
+        <!-- Education -->
+        <section class="cv-section">
+            <h2 class="cv-section-title">Education</h2>
+            <div class="cv-edu-item">
+                <h3>Egyptian American International School (EAIS)</h3>
+                <span class="cv-date">2024 – Present</span>
+            </div>
+            <p class="cv-edu-detail">Grade 11E · American Diploma Track · GPA: 3.85 (Honors)</p>
+        </section>
+
+        <!-- Awards & Honors -->
+        <section class="cv-section">
+            <h2 class="cv-section-title">Awards & Honors</h2>
+
+            <div class="cv-award-item">
+                <h3>Honor Roll — Certificate of Merit</h3>
+                <p>Achieved Honors standing with a 3.85 GPA in Grade 11E at EAIS.</p>
+                <span class="cv-meta">EAIS — Academic Year 2024–2025</span>
+            </div>
+
+            <div class="cv-award-item">
+                <h3>Best Integrated Project — Semester 1 (AirCred)</h3>
+                <p>Awarded for designing a clean energy signal tower replacement powered by solar panels.</p>
+                <span class="cv-meta">EAIS — Academic Year 2025–2026</span>
+            </div>
+
+            <div class="cv-award-item">
+                <h3>Best Integrated Project — Semester 2 (EduVerse)</h3>
+                <p>Awarded for building a comprehensive academic platform for student collaboration.</p>
+                <span class="cv-meta">EAIS — Academic Year 2025–2026</span>
+            </div>
+
+            <div class="cv-award-item">
+                <h3>6 Keys Award — Collaboration</h3>
+                <p>Recognized for outstanding collaborative skills in Grade 11E.</p>
+                <span class="cv-meta">EAIS — Academic Year 2024–2025</span>
+            </div>
+
+            <div class="cv-award-item">
+                <h3>Premium Award — Digital Egypt Cubs Initiative (DECI)</h3>
+                <p>Certificate of Achievement, Summer Camp (Second Batch 23/24).</p>
+                <span class="cv-meta">Ministry of Communications & IT — August 2024</span>
+            </div>
+        </section>
+
+        <!-- Certifications -->
+        <section class="cv-section">
+            <h2 class="cv-section-title">Certifications</h2>
+            <div class="cv-cert-grid">
+                <div class="cv-cert-item">
+                    <h4>HCIA — Cloud Computing</h4>
+                    <p>Huawei ICT Academy</p>
+                    <span class="cv-meta">2024</span>
+                </div>
+                <div class="cv-cert-item">
+                    <h4>HCIA — Artificial Intelligence</h4>
+                    <p>Huawei ICT Academy</p>
+                    <span class="cv-meta">2024</span>
+                </div>
+                <div class="cv-cert-item">
+                    <h4>HCIA — Datacom</h4>
+                    <p>Huawei ICT Academy</p>
+                    <span class="cv-meta">2024</span>
+                </div>
+                <div class="cv-cert-item">
+                    <h4>HCIA — Storage</h4>
+                    <p>Huawei ICT Academy</p>
+                    <span class="cv-meta">2024</span>
+                </div>
+                <div class="cv-cert-item">
+                    <h4>HCIA — Big Data</h4>
+                    <p>Huawei ICT Academy</p>
+                    <span class="cv-meta">2024</span>
+                </div>
+                <div class="cv-cert-item">
+                    <h4>Prompt Engineering</h4>
+                    <p>Anthropic</p>
+                    <span class="cv-meta">2025</span>
+                </div>
+                <div class="cv-cert-item">
+                    <h4>Real-World Prompt Engineering</h4>
+                    <p>Anthropic</p>
+                    <span class="cv-meta">2025</span>
+                </div>
+                <div class="cv-cert-item">
+                    <h4>DECI Certificate of Achievement</h4>
+                    <p>Ministry of Communications & IT (MCIT)</p>
+                    <span class="cv-meta">2024</span>
+                </div>
+                <div class="cv-cert-item">
+                    <h4>Python Essentials 1</h4>
+                    <p>Cisco Networking Academy</p>
+                    <span class="cv-meta">2024</span>
+                </div>
+                <div class="cv-cert-item">
+                    <h4>Introduction to Cybersecurity</h4>
+                    <p>Cisco Networking Academy</p>
+                    <span class="cv-meta">2024</span>
+                </div>
+                <div class="cv-cert-item">
+                    <h4>Junior Data Analyst</h4>
+                    <p>HP LIFE</p>
+                    <span class="cv-meta">2024</span>
+                </div>
+                <div class="cv-cert-item">
+                    <h4>HTML Interactive</h4>
+                    <p>SoloLearn</p>
+                    <span class="cv-meta">2024</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section class="cv-section">
+            <h2 class="cv-section-title">Projects</h2>
+
+            <div class="cv-project-item">
+                <h3>AirCred</h3>
+                <p class="cv-tagline">Connecting People, Powering the Planet</p>
+                <p>Designed a next-generation clean energy solution to replace traditional signal towers with eco-friendly alternatives that emit lower radiation and are powered entirely by integrated solar panels and air purification filters. Built the companion app "AirCred" for monitoring and management. Won Best Integrated Project — Semester 1.</p>
+            </div>
+
+            <div class="cv-project-item">
+                <h3>EduVerse</h3>
+                <p class="cv-tagline">Discover Your Academic Universe</p>
+                <p>Built a comprehensive academic platform for student collaboration, academic planning, and course discovery. Won Best Integrated Project — Semester 2.</p>
+                <a href="https://ziadfouda.softr.app" target="_blank" class="cv-link">🔗 ziadfouda.softr.app</a>
+            </div>
+
+            <div class="cv-project-item">
+                <h3>LinkSafe</h3>
+                <p class="cv-tagline">Verify. Protect. Stay Safe.</p>
+                <p>Built a web-based cybersecurity tool that verifies and analyzes URLs to protect users from phishing, malware, and malicious links. Provides real-time safety checks and threat detection for secure browsing.</p>
+                <a href="https://ziadfouda.github.io/LINKSAFE/" target="_blank" class="cv-link">🔗 ziadfouda.github.io/LINKSAFE</a>
+            </div>
+
+            <div class="cv-project-item">
+                <h3>System Optimization</h3>
+                <p>Customized smartphone interfaces, configured software-based privacy filters, and optimized Windows systems for improved performance and efficiency.</p>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section class="cv-section">
+            <h2 class="cv-section-title">Skills</h2>
+            <div class="cv-skills-grid">
+                <div class="cv-skill-cat">
+                    <h4>Programming & IT</h4>
+                    <div class="cv-skill-tags">
+                        <span class="cv-tag">Python</span>
+                        <span class="cv-tag">HTML/CSS</span>
+                        <span class="cv-tag">Cloud Computing</span>
+                        <span class="cv-tag">AI / LLMs</span>
+                        <span class="cv-tag">Networking</span>
+                        <span class="cv-tag">Cybersecurity</span>
+                    </div>
+                </div>
+                <div class="cv-skill-cat">
+                    <h4>Creative & Soft Skills</h4>
+                    <div class="cv-skill-tags">
+                        <span class="cv-tag">Video Editing</span>
+                        <span class="cv-tag">Prompt Engineering</span>
+                        <span class="cv-tag">Data Analysis</span>
+                        <span class="cv-tag">Content Creation</span>
+                        <span class="cv-tag">Collaboration</span>
+                        <span class="cv-tag">Leadership</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Languages -->
+        <section class="cv-section">
+            <h2 class="cv-section-title">Languages</h2>
+            <div class="cv-lang-row">
+                <p><span>Arabic</span> — Native</p>
+                <p><span>English</span> — Fluent</p>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
