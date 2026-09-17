@@ -349,7 +349,7 @@
 </head>
 <body>
 
-    <button class="print-btn no-print" onclick="window.print()">📄 Save as PDF</button>
+    <button class="print-btn no-print" onclick="downloadCV()">📄 Download PDF</button>
 
     <div class="cv-container">
 
@@ -460,6 +460,11 @@
                     <span class="cv-meta">2024</span>
                 </div>
                 <div class="cv-cert-item">
+                    <h4>DECI Phase 2 - Summer Competition</h4>
+                    <p>MCIT / Eyouth</p>
+                    <span class="cv-meta">Sep 2026</span>
+                </div>
+                <div class="cv-cert-item">
                     <h4>Python Essentials 1</h4>
                     <p>Cisco Networking Academy</p>
                     <span class="cv-meta">2024</span>
@@ -507,6 +512,24 @@
             </div>
 
             <div class="cv-project-item">
+                <h3>City Library Data Analysis</h3>
+                <p class="cv-tagline">AI Level 3 Final Project</p>
+                <p>Comprehensive data analysis of Summer Reading Data for a City Library After-School Program, applying advanced AI and data science skills.</p>
+            </div>
+
+            <div class="cv-project-item">
+                <h3>DigitaMart Data Analyst</h3>
+                <p class="cv-tagline">AI Level 3 First Term Project</p>
+                <p>Acted as a Junior Data Analyst for DigitaMart, an Egyptian e-commerce shop, analyzing electronics, clothing, and grocery sales across major cities.</p>
+            </div>
+
+            <div class="cv-project-item">
+                <h3>IoT Summer Project</h3>
+                <p class="cv-tagline">Level 3 / 4 Competition</p>
+                <p>Applied IoT concepts and skills developed throughout the DECI program in an integrated practical data experience.</p>
+            </div>
+
+            <div class="cv-project-item">
                 <h3>System Optimization</h3>
                 <p>Customized smartphone interfaces, configured software-based privacy filters, and optimized Windows systems for improved performance and efficiency.</p>
             </div>
@@ -551,6 +574,30 @@
         </section>
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        function downloadCV() {
+            const element = document.querySelector('.cv-container');
+            const opt = {
+                margin:       [0.4, 0.5, 0.4, 0.5],
+                filename:     'Ziad_Fouda_CV.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true, backgroundColor: '#0b1220' },
+                jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' },
+                pagebreak:    { mode: ['avoid-all', 'css', 'legacy'] }
+            };
+            html2pdf().set(opt).from(element).save();
+        }
+
+        // Auto-download if opened with ?download=true
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('download') === 'true') {
+            window.addEventListener('load', function() {
+                setTimeout(downloadCV, 1500);
+            });
+        }
+    </script>
 
 </body>
 </html>
